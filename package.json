@@ -19,9 +19,9 @@
 		"node": ">=16"
 	},
 	"scripts": {
-		"test": "xo --env=node && pnpm run build && mocha -r ts-node/register 'tests/**/*.js'",
+		"test": "xo --env=node && npm run build && mocha -r ts-node/register 'tests/**/*.js'",
 		"build": "del-cli dist && tsc",
-		"prepack": "pnpm run build"
+		"prepack": "npm run build"
 	},
 	"files": [
 		"dist"
