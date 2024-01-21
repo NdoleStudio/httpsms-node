@@ -2,7 +2,6 @@
 
 [![Version](https://img.shields.io/npm/v/httpsms.svg)](https://www.npmjs.org/package/httpsms)
 [![Build](https://github.com/NdoleStudio/httpsms-node/actions/workflows/main.yml/badge.svg)](https://github.com/NdoleStudio/httpsms-node/actions/workflows/main.yml)
-[![codecov](https://codecov.io/gh/NdoleStudio/httpsms-node/branch/main/graph/badge.svg)](https://codecov.io/gh/NdoleStudio/httpsms-node)
 [![GitHub contributors](https://img.shields.io/github/contributors/NdoleStudio/httpsms-node)](https://github.com/NdoleStudio/httpsms-node/graphs/contributors)
 [![GitHub license](https://img.shields.io/github/license/NdoleStudio/httpsms-node?color=brightgreen)](https://github.com/NdoleStudio/httpsms-node/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/httpsms.svg)](https://www.npmjs.com/package/httpsms)
@@ -14,18 +13,16 @@ This httpSMS library provides a server side javascript and typescript client for
 ```sh
 pnpm install httpsms-node
 # or
-npm install httpsms-node
-# or
 yarn install httpsms-node
 ```
 
 ## Implemented
 
--   [x] **[MessageService](#messages)**
-    -   [x] `POST /v1/messages/send`: Send a new SMS
--   [x] **Cipher**
-    -   [x] `Encrypt`: Encrypt the content of a message to cipher text
-    -   [x] `Decrypt`: Decrypt an encrypted message content to plain text
+- [x] **[Messages](#messages)**
+  - [x] `POST /v1/messages/send`: Send a new SMS
+- [x] **Cipher**
+  - [x] `Encrypt`: Encrypt the content of a message to cipher text
+  - [x] `Decrypt`: Decrypt an encrypted message content to plain text
 
 ## Usage
 
@@ -33,45 +30,52 @@ yarn install httpsms-node
 
 An instance of the client can be created using `httpsms.New()`.
 
-```go
-package main
+```js
+import HttpSms from "httpsms"
 
-import (
-    "github.com/NdoleStudio/httpsms-go"
-)
-
-func main()  {
-    client := htpsms.New(htpsms.WithDelay(200))
-}
+const client = new HttpSms(""/* Get API Key from https://httpsms.com/settings */);
 ```
 
 ### Error handling
 
-All API calls return an `error` as the last return object. All successful calls will return a `nil` error.
+All API calls return a `Promise<T>` as the return object. You can handle the response in the `then` and `catch` methods.
 
-```go
-_, response, err := client.MessageService.Send(context.Background())
-if err != nil {
-    //handle error
-}
+### Messages
+
+#### `POST /v1/messages/send`: Send an SMS Message
+
+```js
+await client.messages.postSend({
+	content: 'This is a sample text message',
+	from: '+18005550199',
+	to: '+18005550100',
+})
+.then((message) => {
+	console.log(message.id);
+})
+.catch((err) => {
+	console.error(err);
+});
 ```
 
-### MessageService
+### Encrypt an SMS message before sending
 
-#### `POST /v1/messages/send`: Send a new SMS Message
+```js
+const encryptionKey = "Password123";
+const encryptedContent = await client.cipher.encrypt("This is a sample text message", encryptionKey);
 
-```go
-message, response, err := client.MessageService.Send(context.Background(), &MessageSendParams{
-    Content: "This is a sample text message",
-    From:    "+18005550199",
-    To:      "+18005550100",
+await client.messages.postSend({
+	content: encryptedContent,
+	from: '+18005550199',
+	encrypted: true,
+	to: '+18005550100',
 })
-
-if err != nil {
-    log.Fatal(err)
-}
-
-log.Println(message.Code) // 202
+.then((message) => {
+	console.log(message.id);
+})
+.catch((err) => {
+	console.error(err);
+});
 ```
 
 ## Testing
@@ -79,9 +83,9 @@ log.Println(message.Code) // 202
 You can run the unit tests for this client from the root directory using the command below:
 
 ```bash
-go tests -v
+pnpm run test
 ```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](license) file for details

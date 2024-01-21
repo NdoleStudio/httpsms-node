@@ -36,6 +36,7 @@
 		"chai": "^5.0.0",
 		"del-cli": "^5.1.0",
 		"mocha": "^10.2.0",
+		"msw": "^2.1.2",
 		"ts-node": "^10.9.2",
 		"tsd": "^0.30.4",
 		"xo": "^0.54.2"
@@ -51,5 +52,10 @@
 		"bracketSpacing": false,
 		"arrowParens": "avoid",
 		"singleQuote": true
+	},
+	"xo": {
+		"rules": {
+			"n/file-extension-in-import": 0
+		}
 	}
 }
