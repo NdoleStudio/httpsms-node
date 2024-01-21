@@ -21,7 +21,6 @@
 	"scripts": {
 		"test": "xo --env=node && ava && pnpm run build && tsd --typings dist/index.d.ts",
 		"build": "del-cli dist && tsc",
-		"publish": "tsup",
 		"prepack": "pnpm run build"
 	},
 	"files": [
