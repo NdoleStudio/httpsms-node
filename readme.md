@@ -1,65 +1,87 @@
-# node-module-boilerplate
+# httpsms-node
 
-> Boilerplate to kickstart creating a Node.js module
+[![Version](https://img.shields.io/npm/v/httpsms.svg)](https://www.npmjs.org/package/httpsms)
+[![Build](https://github.com/NdoleStudio/httpsms-node/actions/workflows/main.yml/badge.svg)](https://github.com/NdoleStudio/httpsms-node/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/NdoleStudio/httpsms-node/branch/main/graph/badge.svg)](https://codecov.io/gh/NdoleStudio/httpsms-node)
+[![GitHub contributors](https://img.shields.io/github/contributors/NdoleStudio/httpsms-node)](https://github.com/NdoleStudio/httpsms-node/graphs/contributors)
+[![GitHub license](https://img.shields.io/github/license/NdoleStudio/httpsms-node?color=brightgreen)](https://github.com/NdoleStudio/httpsms-node/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/npm/dm/httpsms.svg)](https://www.npmjs.com/package/httpsms)
 
-This is what I use for [my own modules](https://www.npmjs.com/~sindresorhus).
-
-Also check out [`node-cli-boilerplate`](https://github.com/sindresorhus/node-cli-boilerplate).
-
-## Getting started
-
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```sh
-curl -fsSL https://github.com/sindresorhus/node-module-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1
-```
-
-There's also a [Yeoman generator](https://github.com/sindresorhus/generator-nm).
-
----
-
-**Remove everything from here and above**
-
----
-
-# unicorn-fun
-
-> My awesome module
+This httpSMS library provides a server side javascript and typescript client for the [httpSMS](https://httpsms.com/) API.
 
 ## Install
 
 ```sh
-npm install unicorn-fun
+pnpm install httpsms-node
+# or
+npm install httpsms-node
+# or
+yarn install httpsms-node
 ```
+
+## Implemented
+
+-   [x] **[MessageService](#messages)**
+    -   [x] `POST /v1/messages/send`: Send a new SMS
+-   [x] **Cipher**
+    -   [x] `Encrypt`: Encrypt the content of a message to cipher text
+    -   [x] `Decrypt`: Decrypt an encrypted message content to plain text
 
 ## Usage
 
-```js
-import unicornFun from 'unicorn-fun';
+### Initializing the Client
 
-unicornFun('unicorns');
-//=> 'unicorns & rainbows'
+An instance of the client can be created using `httpsms.New()`.
+
+```go
+package main
+
+import (
+    "github.com/NdoleStudio/httpsms-go"
+)
+
+func main()  {
+    client := htpsms.New(htpsms.WithDelay(200))
+}
 ```
 
-## API
+### Error handling
 
-### unicornFun(input, options?)
+All API calls return an `error` as the last return object. All successful calls will return a `nil` error.
 
-#### input
+```go
+_, response, err := client.MessageService.Send(context.Background())
+if err != nil {
+    //handle error
+}
+```
 
-Type: `string`
+### MessageService
 
-Lorem ipsum.
+#### `POST /v1/messages/send`: Send a new SMS Message
 
-#### options
+```go
+message, response, err := client.MessageService.Send(context.Background(), &MessageSendParams{
+    Content: "This is a sample text message",
+    From:    "+18005550199",
+    To:      "+18005550100",
+})
 
-Type: `object`
+if err != nil {
+    log.Fatal(err)
+}
 
-##### postfix
+log.Println(message.Code) // 202
+```
 
-Type: `string`\
-Default: `'rainbows'`
+## Testing
 
-Lorem ipsum.
+You can run the unit tests for this client from the root directory using the command below:
+
+```bash
+go test -v
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

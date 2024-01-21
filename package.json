@@ -1,32 +1,62 @@
 {
-	"name": "unicorn-fun",
-	"version": "0.0.0",
-	"description": "My awesome module",
+	"name": "httpsms",
+	"version": "0.0.1",
+	"description": "Client for the httpSMS API",
 	"license": "MIT",
-	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
+	"funding": "https://github.com/sponsors/NdoleStudio",
+	"repository": "https://github.com/NdoleStudio/httpsms-node",
 	"author": {
-		"name": "YOUR NAME",
-		"email": "YOUR EMAIL",
-		"url": "YOUR WEBSITE"
+		"name": "Arnold Ewin Acho",
+		"email": "arnold@ndolestudio.com",
+		"url": "https://acho.arnold.cm"
 	},
 	"type": "module",
-	"exports": "./index.js",
+	"exports": {
+		"types": "./dist/index.d.ts",
+		"default": "./dist/index.js"
+	},
 	"engines": {
 		"node": ">=16"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo --env=node && ava && pnpm run build && tsd --typings dist/index.d.ts",
+		"build": "del-cli dist && tsc",
+		"publish": "tsup",
+		"prepack": "pnpm run build"
 	},
 	"files": [
-		"index.js"
+		"dist"
 	],
 	"keywords": [
-		"unicorn",
-		"fun"
+		"httpsms"
 	],
-	"dependencies": {},
 	"devDependencies": {
+		"@sindresorhus/tsconfig": "^5.0.0",
 		"ava": "^5.3.0",
+		"del-cli": "^5.1.0",
+		"ts-node": "^10.9.2",
+		"tsd": "^0.30.4",
+		"tsup": "^8.0.1",
 		"xo": "^0.54.2"
+	},
+	"dependencies": {
+		"@types/node": "^20.11.5",
+		"axios": "^1.6.5"
+	},
+	"ava": {
+		"extensions": {
+			"ts": "module"
+		},
+		"nodeArguments": [
+			"--loader=tsx"
+		]
+	},
+	"prettier": {
+		"trailingComma": "all",
+		"tabWidth": 4,
+		"semi": true,
+		"bracketSpacing": false,
+		"arrowParens": "avoid",
+		"singleQuote": true
 	}
 }
