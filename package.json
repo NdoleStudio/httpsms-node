@@ -1,0 +1,32 @@
+{
+	"name": "unicorn-fun",
+	"version": "0.0.0",
+	"description": "My awesome module",
+	"license": "MIT",
+	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
+	"author": {
+		"name": "YOUR NAME",
+		"email": "YOUR EMAIL",
+		"url": "YOUR WEBSITE"
+	},
+	"type": "module",
+	"exports": "./index.js",
+	"engines": {
+		"node": ">=16"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"unicorn",
+		"fun"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"ava": "^5.3.0",
+		"xo": "^0.54.2"
+	}
+}
