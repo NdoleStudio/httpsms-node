@@ -1,6 +1,6 @@
 {
 	"name": "httpsms",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Client for the httpSMS API",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/NdoleStudio",
@@ -15,6 +15,7 @@
 		"types": "./dist/index.d.ts",
 		"default": "./dist/index.js"
 	},
+	"types": "./dist/index.d.ts",
 	"engines": {
 		"node": ">=16"
 	},
