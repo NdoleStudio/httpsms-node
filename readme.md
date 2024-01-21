@@ -79,7 +79,7 @@ log.Println(message.Code) // 202
 You can run the unit tests for this client from the root directory using the command below:
 
 ```bash
-go test -v
+go tests -v
 ```
 
 ## License

@@ -2,12 +2,12 @@
 	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
 		"outDir": "dist",
-		"experimentalDecorators": true
+		"experimentalDecorators": true,
+		"esModuleInterop": true
 	},
-	"files": [
-		"index.ts"
-	],
+	"files": ["index.ts"],
 	"ts-node": {
-		"transpileOnly": true
+		"transpileOnly": true,
+		"esm": true
 	}
 }
