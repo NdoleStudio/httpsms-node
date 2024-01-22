@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/NdoleStudio/httpsms-node?color=brightgreen)](https://github.com/NdoleStudio/httpsms-node/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/httpsms.svg)](https://www.npmjs.com/package/httpsms)
 
-This httpSMS library provides a server side javascript and typescript client for the [httpSMS](https://httpsms.com/) API.
+This library provides a server side client for the [httpSMS](https://httpsms.com/) API to help you send and receive SMS messages from your Node.js applications in TypeScript or JavaScript.
 
 ## Install
 

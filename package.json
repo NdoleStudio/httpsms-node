@@ -1,6 +1,6 @@
 {
 	"name": "httpsms",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Client for the httpSMS API",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/NdoleStudio",
