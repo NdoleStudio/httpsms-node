@@ -6,18 +6,18 @@ export type MessageSendRequest = {
 	/** @example "+18005550100" */
 	to: string;
 	/**
-	 * request_id is an optional parameter used to track a request from the client's perspective
+	 * The request_id field is an optional parameter used to track a request from the client's perspective
 	 * @example "153554b5-ae44-44a0-8f4f-7bbac5657ad4"
 	 */
 	request_id?: string;
 	/**
-	 * send_at is an optional parameter used to schedule a message to be sent at a later time
+	 * The send_at field is an optional parameter used to schedule a message to be sent at a later time
 	 * @example "2022-06-05T14:26:09.527976+03:00"
 	 */
 	send_at?: Date;
 	/**
-	 * Determines weather or not the message content is encrypted already. Note that you have to also set the encryption
-	 * key on the Android app for this feature to work properly.
+	 * This encrypted field is an optional parameter which determines weather or not the message content is encrypted.
+	 * Note that you have to also set the encryption key on the Android app for this feature to work properly.
 	 * @example false
 	 */
 	encrypted?: boolean;
