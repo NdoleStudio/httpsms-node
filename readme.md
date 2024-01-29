@@ -11,9 +11,9 @@ This library provides a server side client for the [httpSMS](https://httpsms.com
 ## Install
 
 ```sh
-pnpm install httpsms-node
+pnpm install httpsms
 # or
-yarn install httpsms-node
+yarn install httpsms
 ```
 
 ## Implemented
