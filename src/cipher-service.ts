@@ -36,7 +36,7 @@ class CipherService {
 		]).toString();
 	}
 
-	private hash(value: string): Buffer {
+	private hash(value: string): Uint8Array {
 		return createHash('sha256').update(value).digest();
 	}
 }
