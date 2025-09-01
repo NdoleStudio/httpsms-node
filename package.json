@@ -31,7 +31,7 @@
 		"httpsms"
 	],
 	"devDependencies": {
-		"@sindresorhus/tsconfig": "^7.0.0",
+		"@sindresorhus/tsconfig": "^8.0.1",
 		"@types/chai": "^5.0.0",
 		"@types/mocha": "^10.0.6",
 		"chai": "^5.0.0",
