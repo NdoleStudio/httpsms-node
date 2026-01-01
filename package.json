@@ -43,7 +43,7 @@
 		"xo": "^1.0.5"
 	},
 	"dependencies": {
-		"@types/node": "^24.1.0",
+		"@types/node": "^25.0.3",
 		"axios": "^1.6.5"
 	},
 	"prettier": {
