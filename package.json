@@ -17,7 +17,7 @@
 	},
 	"types": "./dist/index.d.ts",
 	"engines": {
-		"node": ">=20"
+		"node": ">=22"
 	},
 	"scripts": {
 		"test": "xo --env=node && npm run build && mocha -r ts-node/register 'tests/**/*.js'",
