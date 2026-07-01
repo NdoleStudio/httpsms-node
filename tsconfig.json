@@ -3,9 +3,11 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"experimentalDecorators": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"erasableSyntaxOnly": false,
+		"types": ["node"]
 	},
-	"files": ["index.ts"],
+	"include": ["index.ts", "src/**/*.ts"],
 	"ts-node": {
 		"transpileOnly": true,
 		"esm": true

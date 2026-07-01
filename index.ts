@@ -3,10 +3,10 @@ import MessageService from './src/message-service.js';
 import CipherService from './src/cipher-service.js';
 
 class HttpSms {
+	private readonly client: AxiosInstance;
+
 	public messages: MessageService;
 	public cipher: CipherService;
-
-	private readonly client: AxiosInstance;
 
 	constructor(apiKey: string, baseUrl = 'https://api.httpsms.com') {
 		this.client = axios.create({

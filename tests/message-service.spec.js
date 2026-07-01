@@ -9,14 +9,7 @@ const successMessageResponse = '{ "data":  { "id": "32b0774a-5094-4b58-9efa-57bc
 describe('MessageService', () => {
 	it('should respond with a valid message', async () => {
 		// Arrange
-		const server = setupServer(
-			// Describe network behavior with request handlers.
-			// Tip: move the handlers into their own module and
-			// import it across your browser and Node.js setups!
-			http.post('https://api.httpsms.com/v1/messages/send', () =>
-				HttpResponse.json(JSON.parse(successMessageResponse)),
-			),
-		);
+		const server = setupServer(http.post('https://api.httpsms.com/v1/messages/send', () => HttpResponse.json(JSON.parse(successMessageResponse))));
 		server.listen();
 
 		const client = new HttpSms('test key');
@@ -35,14 +28,7 @@ describe('MessageService', () => {
 	});
 	it('should respond with an error when there is a network error', async () => {
 		// Arrange
-		const server = setupServer(
-			// Describe network behavior with request handlers.
-			// Tip: move the handlers into their own module and
-			// import it across your browser and Node.js setups!
-			http.post('https://api.httpsms.com/v1/messages/send', () =>
-				HttpResponse.error(),
-			),
-		);
+		const server = setupServer(http.post('https://api.httpsms.com/v1/messages/send', () => HttpResponse.error()));
 		server.listen();
 
 		const client = new HttpSms('test key');

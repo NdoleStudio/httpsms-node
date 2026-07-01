@@ -11,8 +11,8 @@ class MessageService {
 				.then((response: AxiosResponse<MessageResponse>) => {
 					resolve(response.data.data);
 				})
-				.catch(async (error: AxiosError) => {
-					reject(error);
+				.catch(async (error: unknown) => {
+					reject(error as AxiosError);
 				});
 		});
 	}
