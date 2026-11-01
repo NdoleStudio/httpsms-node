@@ -3,24 +3,21 @@
 	"version": "0.0.4",
 	"description": "Client for the httpSMS API",
 	"license": "MIT",
-	"funding": "https://github.com/sponsors/NdoleStudio",
 	"repository": "https://github.com/NdoleStudio/httpsms-node",
-	"author": {
-		"name": "Arnold Ewin Acho",
-		"email": "arnold@ndolestudio.com",
-		"url": "https://acho.arnold.cm"
-	},
+	"funding": "https://github.com/sponsors/NdoleStudio",
+	"author": "Arnold Ewin Acho <arnold@ndolestudio.com> (https://acho.arnold.cm)",
 	"type": "module",
 	"exports": {
 		"types": "./dist/index.d.ts",
 		"default": "./dist/index.js"
 	},
 	"types": "./dist/index.d.ts",
+	"sideEffects": false,
 	"engines": {
 		"node": ">=22"
 	},
 	"scripts": {
-		"test": "xo --env=node && npm run build && mocha -r ts-node/register 'tests/**/*.js'",
+		"test": "xo --env=node && npm run build && mocha -r ts-node/register \"tests/**/*.js\"",
 		"build": "del-cli dist && tsc",
 		"prepack": "npm run build"
 	},
@@ -28,8 +25,12 @@
 		"dist"
 	],
 	"keywords": [
-		"httpsms"
+		"sms"
 	],
+	"dependencies": {
+		"@types/node": "^26.0.1",
+		"axios": "^1.6.5"
+	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^8.0.1",
 		"@types/chai": "^5.0.0",
@@ -42,10 +43,6 @@
 		"tsd": "^0.33.0",
 		"xo": "^5.0.1"
 	},
-	"dependencies": {
-		"@types/node": "^26.0.1",
-		"axios": "^1.6.5"
-	},
 	"prettier": {
 		"trailingComma": "all",
 		"tabWidth": 4,
@@ -54,15 +51,23 @@
 		"arrowParens": "avoid",
 		"singleQuote": true
 	},
-	"xo": {
-		"rules": {
-			"n/file-extension-in-import": 0,
-			"jsdoc/require-asterisk-prefix": 0,
-			"unicorn/prefer-uint8array-base64": 0,
-			"@typescript-eslint/no-unsafe-return": 0,
-			"@typescript-eslint/no-unsafe-call": 0,
-			"@typescript-eslint/no-unsafe-member-access": 0,
-			"@typescript-eslint/no-unsafe-assignment": 0
+	"xo": [
+		{
+			"rules": {
+				"n/file-extension-in-import": 0,
+				"jsdoc/require-asterisk-prefix": 0,
+				"unicorn/prefer-uint8array-base64": 0,
+				"@typescript-eslint/no-unsafe-return": 0,
+				"@typescript-eslint/no-unsafe-call": 0,
+				"@typescript-eslint/no-unsafe-member-access": 0,
+				"@typescript-eslint/no-unsafe-assignment": 0
+			}
+		},
+		{
+			"files": ["package.json"],
+			"rules": {
+				"package-json/prefer-exports": 0
+			}
 		}
-	}
+	]
 }
